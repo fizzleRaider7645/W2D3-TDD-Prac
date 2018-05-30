@@ -13,7 +13,7 @@ describe "my_uniq" do
 
   it "doesn't modify the original array" do
     output = my_uniq(arr)
-    expect(output).to_not eq(arr)
+    expect(output).to_not be(arr)
   end
 
   it "removes duplicates from the array" do
@@ -37,16 +37,16 @@ describe "Array#two_sum" do
     expect([1, 0, 3, 4, -4].two_sum).to eq([[3, 4]])
   end
 
+  it "returns multiple pairs of elements" do
+    expect([1, -1, 6, 4, -4, 7, 1423].two_sum).to eq([[0, 1], [3, 4]])
+  end
+
   it "index pairs returned in ascending order" do
     expect([1, -1, 0, -1].two_sum).to eq([[0, 1], [0, 3]])
   end
 
   it "returns an empty array in the case of an empty array" do
     expect([].two_sum).to eq([])
-  end
-
-  it "returns multiples pairs of elements" do
-    expect([1, -1, 6, 4, -4, 7, 1423].two_sum).to eq([[0, 1], [3, 4]])
   end
 
   it "returns an empty array if no pairs of elements sum to zero" do
