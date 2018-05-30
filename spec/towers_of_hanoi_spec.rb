@@ -16,7 +16,7 @@ describe "TowersOfHanoi" do
 
       it "does not allow out of bounds move" do
         ex_1 = TowersOfHanoi.new([[3], [2], [1]])
-        expect{ex_1.move(2, 3)}.to raise_error("Invalid move, can't move out of bounds")
+        expect{ex_1.move(2, 3)}.to raise_error("Invalid end position")
 
         ex_2 = TowersOfHanoi.new([[3], [2], [1]])
         expect{ex_2.move(5, 0)}.to raise_error("Invalid start position")
