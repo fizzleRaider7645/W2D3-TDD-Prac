@@ -4,22 +4,20 @@ require "towers_of_hanoi"
 describe "TowersOfHanoi" do
   describe "#move" do
     context "incorrect move" do
+      let(:in_progress_game) { TowersOfHanoi.new([[3], [2], [1]]) }
       it "does not place a bigger number on a smaller number" do
-        ex_1 = TowersOfHanoi.new([[3], [2], [1]])
-        expect{ex_1.move(1, 2)}.to raise_error("Can't move bigger number onto smaller number")
+        expect{in_progress_game.move(1, 2)}.to raise_error("Can't move bigger number onto smaller number")
       end
 
       it "does not allow start position corresponding to an empty tower" do
         ex_1 = TowersOfHanoi.new([[3, 2], [], [1]])
-        expect{ex_1.move(1, 2)}.to raise_error("Invalid move, empty tower at start position")
+        expect{ ex_1.move(1, 2) }.to raise_error("Invalid move, empty tower at start position")
       end
 
       it "does not allow out of bounds move" do
-        ex_1 = TowersOfHanoi.new([[3], [2], [1]])
-        expect{ex_1.move(2, 3)}.to raise_error("Invalid end position")
+        expect{ in_progress_game.move(2, 3) }.to raise_error("Invalid end position")
 
-        ex_2 = TowersOfHanoi.new([[3], [2], [1]])
-        expect{ex_2.move(5, 0)}.to raise_error("Invalid start position")
+        expect{ in_progress_game.move(5, 0) }.to raise_error("Invalid start position")
       end
     end
 

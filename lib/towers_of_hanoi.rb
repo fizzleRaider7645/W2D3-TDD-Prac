@@ -17,8 +17,6 @@ class TowersOfHanoi
     towers == [[], [3,2,1], []] || towers == [[], [], [3,2,1]]
   end
 
-
-
   private
 
   def in_bounds?(pos)
@@ -33,7 +31,6 @@ class TowersOfHanoi
     raise "Invalid end position" unless in_bounds?(end_pos)
     raise "Invalid start position" unless in_bounds?(start_pos)
     raise "Invalid move, empty tower at start position" if towers[start_pos].empty?
-    # byebug
     raise "Can't move bigger number onto smaller number" if bigger_disc_onto_smaller_disc?(start_pos, end_pos)
     true
   end
